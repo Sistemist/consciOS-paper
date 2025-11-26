@@ -11,6 +11,6 @@ pandoc \
   --pdf-engine=tectonic \
   --template=tex/custom-template.tex \
   --resource-path=. \
-  --output preprint/ConsciOS_v1.0_neutral.pdf \
+  --output preprint/ConsciOS_v1.0_preprint.pdf \
   paper-v1.0.md
-echo "Wrote preprint/ConsciOS_v1.0_neutral.pdf"
+echo "Wrote preprint/ConsciOS_v1.0_preprint.pdf"

@@ -804,6 +804,8 @@ VSM Systems and ConsciOS alignment (concise):
 
 During the preparation of this work, the author used Claude Sonnet 4.5 for initial brainstorming and structuring, and GPT-5 High in the Cursor/Antigravity IDE for generating a preliminary draft, including the structural outline, initial references, and literature integration. This process took approximately 3 hours under the author's guidance. The author then spent 3 weeks rigorously reviewing, fact-checking, editing, and refining the output within an agentic workflow to ensure accuracy, originality, conceptual integrity, and alignment with the intended contributions. The author takes full responsibility for the content of the publication.
 
+\raggedright
+
 ## References
 
 [1] B. Schoen, E. Nitishinskaya, M. Balesni, et al., "Stress Testing Deliberative Alignment for Anti-Scheming Training," Apollo Research & OpenAI, 2025. arXiv:2509.15541.
@@ -822,7 +824,7 @@ During the preparation of this work, the author used Claude Sonnet 4.5 for initi
 
 [8] J. Smallwood and J. W. Schooler, "The Science of Mind Wandering: Empirically Navigating the Stream of Consciousness," Annual Review of Psychology, vol. 66, pp. 487–518, 2015. doi:10.1146/annurev-psych-010814-015331.
 
-[9] K. Kaynak, "ConsciOS v1.0 Code Repository," Source code, 2025. Available: <https://github.com/Sistemist/consciOS-paper>.
+[9] K. Kaynak, "ConsciOS v1.0 Code Repository," Source code, 2025. Available: https://github.com/Sistemist/consciOS-paper.
 
 [10] P. M. Senge, "The Fifth Discipline: The Art and Practice of the Learning Organization," Revised and Updated. Doubleday/Currency, 2006.
 

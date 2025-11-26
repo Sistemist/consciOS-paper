@@ -9,6 +9,3 @@ This repository contains the ConsciOS v1.0 manuscript (paper.md), preprint build
 ## License
 
 This work is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — free to use, adapt, and share with attribution.
-
-For the Seismic whitepaper and site, see:
-- Website: https://goseismic.org
