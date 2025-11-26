@@ -11,8 +11,6 @@ code/env/
 code/logs/
 code/plots/
 
-# Internal/private files
-seismic-logo.png
 
 # Backup files
 *.backup*
@@ -21,6 +19,3 @@ seismic-logo.png
 
 # macOS
 .DS_Store
-
-# Old versions
-paper-v0.9.md

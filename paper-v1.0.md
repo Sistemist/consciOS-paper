@@ -124,7 +124,7 @@ To operationalize consciousness as an engineering target we adopt a multi-layer 
 
 * **Physical Layer:** material substrate, embodied sensors and actuators, and physical laws constraining feasible actions.
 * **Informational Layer:** representations, data structures, code, and communicated signals (including logs, messages, and policy descriptors).
-* **Energetic Layer:** sustained coherence, affective valence, and a time-integrated coherence resource (which we term **FREQ Coin**^[**FREQ Coin:** The term intentionally bridges technical and operational domains. "FREQ" references frequency—both in the control-theoretic sense (rate of coherent state selection) and in contemplative traditions where "raising frequency" describes emotional/energetic states aligned with the Emotional Guidance Scale. "Coin" evokes resource economics and blockchain-like accumulation mechanics. This dual reference enables both formal modeling (as time-integrated coherence) and practical application. The Seismic ecosystem is also working towards implementing a corresponding on-chain governance token to operationalize coherence-based economics in regenerative decentralized funding mechanisms.]), alongside other resource metrics (e.g., metabolic/attention budgets).
+* **Energetic Layer:** sustained coherence, affective valence, and a time-integrated coherence resource (which we term **FREQ Coin**^[**FREQ Coin:** The term intentionally bridges technical and operational domains. "FREQ" references frequency—both in the control-theoretic sense (rate of coherent state selection) and in contemplative traditions where "raising frequency" describes emotional/energetic states aligned with the Emotional Guidance Scale. "Coin" evokes resource economics and blockchain-like accumulation mechanics. This dual reference enables both formal modeling (as time-integrated coherence) and practical application.]), alongside other resource metrics (e.g., metabolic/attention budgets).
 * **Consciousness Layer:** subjective report, self-model, long-horizon priors, and meta-intentional structures.
 
 This tiered ontology follows contemporary approaches that treat cognition as a multi-scale phenomenon where higher-order priors constrain lower-level processing (active inference / predictive processing) [14]-[16]. Active-inference treatments of the self demonstrate how hierarchical priors instantiate self-representations and influence perception–action loops, providing a formal justification for treating consciousness as a layered control architecture rather than a monolithic phenomenon [15]. The "relevance realization" problem — how an agent determines which internal representations are presently important — has been recently formalized in the predictive-processing literature and directly motivates the Resonance Engine as a coherence-based selector among candidate policy frames [17].
@@ -800,9 +800,9 @@ VSM Systems and ConsciOS alignment (concise):
 
 **Notes:** Echo corresponds to operational bandwidth and local control; Super aggregates feedback and selects among policy families; Meta encodes priors and identity constraints that shape policy space and slow updates. This mapping is heuristic but aligns with canonical VSM roles [11], [13].
 
-## Acknowledgments
+## Declaration of Generative AI and AI-Assisted Technologies in the Writing Process
 
-This manuscript's conceptual framework emerged during the development of the related book 'Conscious Life,' where Claude Sonnet 4.5 assisted with initial brainstorming and structuring. The idea for an academic paper arose in a subsequent session using GPT-5 High in the Cursor IDE, which produced a full initial draft—including a structural skeleton, preliminary references, and literature integration—in approximately 3 hours under the author's continuous guidance. The author then dedicated 3 weeks to rigorous fact-checking, detailed editing, and refinement within the agentic Cursor workflow, treating the process as a hybrid collaboration akin to guiding AI 'assistants' under detective-like scrutiny to ensure accuracy, originality, conceptual integrity, and alignment with the intended contributions while addressing any deviations or inaccuracies.
+During the preparation of this work, the author used Claude Sonnet 4.5 for initial brainstorming and structuring, and GPT-5 High in the Cursor/Antigravity IDE for generating a preliminary draft, including the structural outline, initial references, and literature integration. This process took approximately 3 hours under the author's guidance. The author then spent 3 weeks rigorously reviewing, fact-checking, editing, and refining the output within an agentic workflow to ensure accuracy, originality, conceptual integrity, and alignment with the intended contributions. The author takes full responsibility for the content of the publication.
 
 ## References
 
@@ -822,7 +822,7 @@ This manuscript's conceptual framework emerged during the development of the rel
 
 [8] J. Smallwood and J. W. Schooler, "The Science of Mind Wandering: Empirically Navigating the Stream of Consciousness," Annual Review of Psychology, vol. 66, pp. 487–518, 2015. doi:10.1146/annurev-psych-010814-015331.
 
-[9] Seismic Initiative, "ConsciOS v1.0: A Viable Systems Architecture—Code Repository," Source code, 2025. Available: https://github.com/seismic-initiative/consciOS-academic-paper. Accessed: Oct. 16, 2025.
+[9] K. Kaynak, "ConsciOS v1.0 Code Repository," Source code, 2025. Available: <https://github.com/Sistemist/consciOS-paper>.
 
 [10] P. M. Senge, "The Fifth Discipline: The Art and Practice of the Learning Organization," Revised and Updated. Doubleday/Currency, 2006.
 

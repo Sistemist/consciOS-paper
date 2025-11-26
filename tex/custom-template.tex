@@ -65,6 +65,7 @@
   \setlength{\itemsep}{6pt}\setlength{\parskip}{3pt}}
 
 % Hyperlinks (load AFTER titlesec and enumitem for proper anchors/bookmarks)
+\usepackage{xurl}
 \usepackage[hidelinks]{hyperref}
 \hypersetup{
   bookmarks=true,
@@ -163,8 +164,8 @@
 % First page style
 \fancypagestyle{plain}{%
   \fancyhf{}
-  % Seismic logo on first page (left header, 40px ≈ 30pt high)
-  \fancyhead[L]{\raisebox{-8pt}{\hspace{-6pt}\includegraphics[height=30pt]{seismic-logo.png}}}
+  % Seismic logo removed
+  \fancyhead[L]{}
   \fancyhead[R]{\small 2025-08-14}
   \renewcommand{\headrulewidth}{0.2pt}
   \renewcommand{\footrulewidth}{0pt}
@@ -195,7 +196,7 @@
     \vspace{0.40cm}% more space after main title
     {\large\bfseries Kılıçhan (Han Kay) Kaynak$$^*$$\par}%
     \vspace{0.12cm}% slightly tighter before affiliation
-    {\normalsize Seismic Labs (Independent Researcher)\par}%
+    {\normalsize Independent Researcher\par}%
   \end{center}%
   \vspace{0.25cm}% tighter gap to abstract
 }
