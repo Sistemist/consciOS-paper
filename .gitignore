@@ -19,3 +19,6 @@ code/plots/
 
 # macOS
 .DS_Store
+
+# Old versions
+paper-v1.0.md
