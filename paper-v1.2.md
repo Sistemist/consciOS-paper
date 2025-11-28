@@ -455,6 +455,10 @@ where $L_{\mathrm{total}}$ includes prediction error terms that were previously 
 
 **Model status.** Algorithmic mapping is established; the specific FREQ operationalization (time-integrated coherence gating higher frames) is a design innovation requiring benchmarks across meta-RL tasks.
 
+\vspace{1em}
+
+**Table 1.** Comparison of ConsciOS and Standard HRL features.
+
 | Feature | ConsciOS (Echo/Super/Meta) | Standard HRL (Options/Feudal) |
 | :--- | :--- | :--- |
 | **Selection Signal** | Resonance (Coherence + Utility - Cost) | Value Function (Reward Maximization) |
@@ -709,9 +713,11 @@ Each template includes the stepwise procedure, required hardware/software, analy
 * **B.4** Policy logging schema & Super-Self selection trace format (JavaScript Object Notation (JSON) schema).
 * **B.5** Statistical analysis pipelines (time-series mixed models, Granger causality / vector autoregression (VAR), causal estimation approach).
 
+\needspace{10\baselineskip}
+
 ## Appendix C — Public Translation & Operationalization
 
-**Table 1.** ConsciOS terminology mapping — public aliases, canonical equivalents, operational definitions, and key citations for cross-disciplinary translation and empirical testing.
+**Table 2.** ConsciOS terminology mapping — public aliases, canonical equivalents, operational definitions, and key citations for cross-disciplinary translation and empirical testing.
 
 | ConsciOS Alias | Canonical Equivalent (scholarly) | Operational definition / measures | Key citations |
 |---|---|---|---|
@@ -728,7 +734,7 @@ Each template includes the stepwise procedure, required hardware/software, analy
 | The Iceberg | Diagnostic hierarchy | Event / pattern / structure / belief measures | [10], [12] |
 | The 7 Flows | Inputs / Processes / Outputs / Feedback / Actors / Constraints | Throughput, latency, bottlenecks | [11], [13] |
 
-**Detailed Terminology Mappings.** The following entries provide expanded definitions, operational measures, and suggested citations for each ConsciOS term listed in Table 1. These detailed mappings support reproducible operationalization and citation tracking across experimental protocols.
+**Detailed Terminology Mappings.** The following entries provide expanded definitions, operational measures, and suggested citations for each ConsciOS term listed in Table 2. These detailed mappings support reproducible operationalization and citation tracking across experimental protocols.
 
 #### Echo-Self
 
