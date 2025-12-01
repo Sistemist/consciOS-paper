@@ -1,6 +1,6 @@
 # ConsciOS Paper
 
-This repository contains the ConsciOS v1.0 manuscript (paper.md), preprint build assets, and a toy code demo.
+This repository contains the ConsciOS v1.2 manuscript (paper-v1.2.md), preprint build assets, and a toy code demo.
 
 - Preprint: `preprint/ConsciOS_v1.2_preprint.pdf`
 - Figures: `./figures`
