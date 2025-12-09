@@ -869,7 +869,7 @@ During the preparation of this work, the author used Claude Sonnet 4.5 for initi
 
 [22] P. Lanillos, C. Meo, C. Pezzato, et al., "Active Inference in Robotics and Artificial Agents: Survey and Challenges," arXiv:2112.01871, 2021.
 
-[23] M. Barthet, A. Khalifa, A. Liapis, and G. N. Yannakakis, "Play with Emotion: Affect-Driven Reinforcement Learning," in 2022 10th International Conference on Affective Computing and Intelligent Interaction (ACII), 2022. doi:10.1109/ACII55700.2022.9953894.
+[23] M. Barthet, A. Khalifa, A. Liapis, and G. N. Yannakakis, "Play with Emotion: Affect-Driven Reinforcement Learning," in 2022 10th International Conference on Affective Computing and Intelligent Interaction (ACII), 2022. arXiv:2208.12622v1.
 
 [24] S. Pateria, B. Subagdja, A.-H. Tan, and C. Quek, "Hierarchical Reinforcement Learning: A Comprehensive Survey," ACM Computing Surveys, 54(5), 1–35, 2021. doi:10.1145/3453160.
 
