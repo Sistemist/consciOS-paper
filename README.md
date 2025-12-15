@@ -1,8 +1,8 @@
 # ConsciOS Paper
 
-This repository contains the ConsciOS v1.2 manuscript (paper-v1.2.md), preprint build assets, and a toy code demo.
+This repository contains the ConsciOS v4 manuscript (paper-v4.md), preprint build assets, and a toy code demo.
 
-- Preprint: `preprint/ConsciOS_v1.2_preprint.pdf`
+- Preprint: `preprint/ConsciOS_v4_preprint.pdf`
 - Figures: `./figures`
 - Build PDF: `./scripts/build_pdf.sh` (Pandoc + Tectonic)
 
