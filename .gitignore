@@ -11,7 +11,6 @@ code/env/
 code/logs/
 code/plots/
 
-
 # Backup files
 *.backup*
 *.bak*
@@ -20,6 +19,9 @@ code/plots/
 # macOS
 .DS_Store
 
-# Old versions
+# Old versions and preprints
+paper-v1.md
+paper-v3.md
 paper-v1.0.md
 preprint/ConsciOS_v1.0_preprint.pdf
+preprint/paper-v1.pdf
