@@ -19,5 +19,6 @@ consciousness architecture; AI alignment; viable systems model; active inference
 ## Suggested Related Identifiers
 
 - Repository: https://github.com/Sistemist/consciOS-paper
-- Prior all-versions DOI: 10.5281/zenodo.17684168
-- Current v4 DOI: 10.5281/zenodo.17943102
+- All-versions DOI: 10.5281/zenodo.17684168
+- Current v5 DOI: 10.5281/zenodo.20169298
+- Prior v4 DOI: 10.5281/zenodo.17943102

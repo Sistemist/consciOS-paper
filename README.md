@@ -6,7 +6,7 @@ This repository contains the ConsciOS v5 manuscript revision for a planned Front
 - Preprint: `preprint/ConsciOS_v5_preprint.pdf`
 - Figures: `./figures`
 - Build PDF: `./scripts/build_pdf.sh` (Pandoc + Tectonic)
-- Public preprint record: https://doi.org/10.5281/zenodo.17943102
+- Public preprint record: https://doi.org/10.5281/zenodo.20169298
 
 ## Code Status
 

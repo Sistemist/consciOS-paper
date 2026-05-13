@@ -7,7 +7,7 @@ version: "v5"
 date-released: "2026-05-13"
 license: CC-BY-4.0
 repository-code: "https://github.com/Sistemist/consciOS-paper"
-doi: "10.5281/zenodo.17943102"
+doi: "10.5281/zenodo.20169298"
 keywords: [conscios, viable systems, active inference, hierarchical RL, interoception]
 preferred-citation:
   type: article
@@ -17,4 +17,4 @@ preferred-citation:
       given-names: Kılıçhan (Han Kay)
   year: 2026
   journal: "Preprint"
-  doi: "10.5281/zenodo.17943102"
+  doi: "10.5281/zenodo.20169298"

@@ -749,7 +749,7 @@ VSM Systems and ConsciOS alignment (concise):
 
 ## Data Availability Statement
 
-This manuscript presents a theoretical architecture and proposed protocols; no new human-subjects or animal data were collected. The project repository contains the manuscript source, figures, toy simulation code, and illustrative logs/plots used for instrumentation checks [9]. The current public preprint record is available on Zenodo at doi:10.5281/zenodo.17943102. Repository and preprint metadata should be updated before final journal submission if a new v5 Zenodo version is deposited.
+This manuscript presents a theoretical architecture and proposed protocols; no new human-subjects or animal data were collected. The project repository contains the manuscript source, figures, toy simulation code, and illustrative logs/plots used for instrumentation checks [9]. The v5 public preprint record is available on Zenodo at doi:10.5281/zenodo.20169298.
 
 ## Ethics Statement
 
