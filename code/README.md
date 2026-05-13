@@ -1,10 +1,12 @@
-# ConsciOS Demo: Hierarchical Controller Benchmark
+# ConsciOS Demo: Hierarchical Controller Instrumentation
 
-Minimal ablations for the ConsciOS architecture:
-- Flat agent vs Hierarchical (Echo/Super/Meta)
+Minimal instrumentation checks for the ConsciOS architecture:
+- Flat agent vs hierarchical controller sketch
 - Resonance Engine selection (β/α sweeps)
-- Cumulative coherence gating (FREQ on/off)
-- EGS‑like intrinsic shaping on/off
+- Cumulative coherence gating on/off
+- ICS-like intrinsic shaping on/off
+
+These scripts are intended to verify logging, plotting, and selector sensitivity in a toy environment. They are not empirical validation of the full ConsciOS architecture.
 
 ## Setup
 python -m venv .venv && source .venv/bin/activate
@@ -44,5 +46,3 @@ PYTHONPATH=code python -m ablate.summarize_ablation
 
 ## Notes
 Default coherence: log‑evidence proxy; KLD/cosine alternatives available in coherence/.
-
-

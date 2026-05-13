@@ -5,12 +5,12 @@ author: |
   Independent Researcher
   kkaynak@alumni.cmu.edu
 abstract: |
-  Real-world human, organizational, and artificial systems exhibit persistent misalignment, brittle adaptation under distributional shift, and limited option-availability. Recent stress tests of anti-scheming training reduce—but do not eliminate—covert behaviors and may be confounded by growing evaluation awareness in frontier models, motivating architectures grounded in internal principles of alignment rather than external rules. This paper proposes ConsciOS, a formal systems architecture that models consciousness and self-regulation as a nested control system amenable to specification, simulation, and empirical testing. Our contributions are: (i) a principled decomposition into an embodied controller, a supervisory controller and policy selector, and a meta-controller and prior generator; (ii) a coherence-based selector that integrates expected utility, coherence, and cost for frame selection; (iii) a discretized interoceptive control signal that operationalizes interoceptive feedback for rapid guidance; and (iv) a time-integrated coherence (TIC) resource that gates policy complexity and option-availability. We provide formal definitions, algorithmic sketches and a set of testable hypotheses with simulation and human-subjects protocols. We situate the constructs within established literatures, outline governance and safety considerations for human-in-the-loop and agentic applications, and present a pragmatic empirical roadmap for evaluating coherence-based control in hybrid human-agent systems. We discuss implications for AI alignment: coherence-based architectures suggest a systematic solution to ensuring AI systems remain robustly aligned with human values across contexts and timescales.
+  Real-world human, organizational, and artificial systems exhibit persistent misalignment, brittle adaptation under distributional shift, and limited option-availability. Recent stress tests of anti-scheming training reduce—but do not eliminate—covert behaviors and may be confounded by growing evaluation awareness in frontier models, motivating architectures whose alignment properties are inspectable at the level of internal control structure rather than only external behavioral correction. This Hypothesis and Theory paper proposes ConsciOS, a formal systems architecture that models consciousness and self-regulation as a nested control system amenable to specification, simulation, and empirical testing. Its contributions are: (i) a principled decomposition into an embodied controller, a supervisory controller and policy selector, and a meta-controller and prior generator; (ii) a coherence-based selector that integrates expected utility, coherence, and cost for frame selection; (iii) a discretized interoceptive control signal that operationalizes interoceptive feedback for rapid guidance; and (iv) a time-integrated coherence (TIC) resource that gates policy complexity and option-availability. The paper provides formal definitions, algorithmic sketches, and testable hypotheses with proposed simulation and human-subjects protocols. It situates the constructs within systems theory, active inference, affect science, hierarchical reinforcement learning, and human-in-the-loop AI alignment. The central claim is not that ConsciOS is empirically validated, but that coherence-based hierarchical control is a falsifiable research program for evaluating whether internal coherence signals can improve robustness, interpretability, and value-sensitive policy selection in hybrid human-agent systems.
 ---
 
 # 1. Introduction
 
-Contemporary social, technological, and biological systems show persistent failures that cannot be resolved by event-level fixes alone. Existing alignment approaches rely on post-hoc oversight and reward shaping, which struggle with inner misalignment, adversarial attacks, and novel contexts. Recent evaluations of anti-scheming training report substantial reductions in covert actions but with residual misbehavior and increasing evaluation awareness, complicating assessment of true alignment [1], [2]. This paper presents ConsciOS, a formal systems architecture that treats consciousness and self-regulation as designable, testable systems and provides a principled foundation for building aligned systems—whether human, organizational, or artificial—grounded in structural coherence rather than post-hoc correction. We synthesize cybernetic models, active inference, and hierarchical reinforcement learning (HRL) into a single engineering language. This framework is intended to (a) map layered self-models to implementable control architectures, (b) formalize an affect-informed feedback channel for state selection [3], and (c) propose empirical protocols for both human and artificial agents.
+Contemporary social, technological, and biological systems show persistent failures that cannot be resolved by event-level fixes alone. Existing AI alignment approaches often rely on post-hoc oversight, reward modeling, or behavior-level correction, all of which face challenges under inner misalignment, adversarial pressure, and novel contexts. Recent evaluations of anti-scheming training report substantial reductions in covert actions but with residual misbehavior and increasing evaluation awareness, complicating assessment of true alignment [1], [2]. This paper presents ConsciOS, a formal systems architecture that treats consciousness and self-regulation as designable, testable control structures. The framework is intended to provide a research program for studying aligned behavior in human-agent and artificial-agent systems by grounding policy selection in structural coherence rather than post-hoc correction alone. We synthesize cybernetic models, active inference, and hierarchical reinforcement learning (HRL) into a single engineering language intended to (a) map layered self-models to implementable control architectures, (b) formalize an affect-informed feedback channel for state selection [3], and (c) propose empirical protocols for both human and artificial agents.
 
 Our goal is not metaphysical speculation but an operational research program: to convert narrative constructs into measurable constructs and falsifiable hypotheses. Contemplative practices across cultures represent millennia of systematic observation on consciousness, attention, and self-regulation; modern neuroscience of interoception and affect provides convergent empirical support for these mechanisms [3]-[6]. We treat these convergent phenomenological reports as hypothesis-generating resources rather than evidentiary authority. Where we draw inspiration from those traditions, we explicitly avoid unfalsifiable metaphysical claims and translate experiential constructs into formal control-theoretic operationalizations (awareness → meta-controllers and policy priors; felt sense → interoceptive signals; coherence with purpose → resonance metrics) with concrete tests in Appendix A. The result is a researchable bridge from narrative practice to instrumented science. This bridge connects to hierarchical "observer-window" frameworks (e.g., the NOW model) and empirical work on mind-wandering/meta-awareness, which emphasize multi-scale integration via synchrony/coherence and supervisory control; our nested controller architecture operationalizes these ideas for control, measurement, and AI alignment [7], [8].
 
@@ -18,13 +18,13 @@ Our goal is not metaphysical speculation but an operational research program: to
 
 This paper is primarily a conceptual and experimental design contribution. We propose (a) formal model definitions and algorithms for nested controller architectures, (b) operationalizations of affective and coherence measures, and (c) a set of hypothesis-driven experimental probes and simulation benchmarks. Full experimental protocols, measurement specifications, and analysis plans are provided in Appendix A (Experimental Protocols) and Appendix B (Measurement Instruments & Analysis Pipelines). In brief:
 
-* **Human experiments:** randomized designs and ecological time-series sampling using validated physiological and self-report instruments (e.g., heart-rate variability (HRV), validated affect ladders) with pre/post behavioral tasks and time-series outcome measures. Ethical review and informed consent are prerequisites for all human work.
+* **Human experiments:** randomized designs and ecological momentary assessment (EMA) time-series sampling using validated physiological and self-report instruments (e.g., heart-rate variability (HRV), validated affect ladders) with pre/post behavioral tasks and time-series outcome measures. Ethical review and informed consent are prerequisites for all human work.
 * **Simulation experiments:** hierarchical reinforcement learning (HRL) and meta-learning benchmarks with controlled distributional shifts, reproducible environment seeds, and clearly logged policy metadata (policy families, selection traces, reward histories).
 * **Hybrid human-in-the-loop tests:** human labeling or Interoceptive Control Signals (ICS) used as shaped rewards or policy selection cues for agent training; evaluation on transfer and human-perceived agency.
 
 The compact Methods Overview above orients the reader; full procedural detail required for replication (sample sizes, instrumentation settings, pre-registration templates, and code references) is provided in Appendix A and Appendix B. Reference implementations and analysis code are available in the project repository [9].
 
-**Terminology & Operational Definitions.** To avoid ambiguity, we adopt canonical technical vocabulary for formal presentation (e.g., Embodied Controller, Supervisory Controller, Meta-Controller, Interoceptive Feedback). To facilitate interdisciplinary dialogue and community engagement, we use a parallel set of "ConsciOS Aliases" (Echo-Self, Super-Self, Meta-Self, Kernel, etc.) which appear strictly in Appendix C (Public Translation & Operationalization). Appendix C provides a complete mapping table that links every ConsciOS alias to its canonical equivalent, an operational definition, suggested measurement instruments, and key citations.
+**Terminology & Operational Definitions.** To avoid ambiguity, we use canonical technical vocabulary throughout the formal presentation (e.g., Embodied Controller, Supervisory Controller, Meta-Controller, Interoceptive Control Signal). Appendix C provides a compact operational glossary linking each construct to proposed implementation measures and citation placement.
 
 ## 1.2 Notation & Metric Preamble
 
@@ -34,7 +34,7 @@ We use the following symbols consistently throughout the paper. Pi (Π) denotes 
 
 # 2. Foundational Models: A Systems-Theoretic Framework
 
-This section formalizes two complementary systems-theoretic tools used throughout this paper: (1) the Iceberg Model, a diagnostic hierarchy for identifying causal leverage in complex systems (Fig. 1) [10], [11]; and (2) a 7-component Universal System Model, an architectural template for describing the functional elements of viable systems (Fig. 2) [12], [13]. Together they provide a common language for mapping claims about consciousness, behavior, and artificial agents to implementable system designs.
+This section formalizes two complementary systems-theoretic tools used throughout this paper: (1) the Iceberg Model, a diagnostic hierarchy for identifying causal leverage in complex systems [10], [11]; and (2) a 7-component Universal System Model, an architectural template for describing the functional elements of viable systems [12], [13]. Together they provide a common language for mapping claims about consciousness, behavior, and artificial agents to implementable system designs.
 
 
 Detailed experimental protocols, measurement specifications, and analysis plans are provided in Appendix A (Experimental Protocols) and Appendix B (Measurement Instruments & Analysis Pipelines).
@@ -106,7 +106,7 @@ We formulate a small set of testable hypotheses that follow from the mapping. Th
 
 **H1 (Structure-Change Leverage):** Interventions targeting Internal Constraints (belief priors) will produce larger changes in pattern metrics over time than interventions targeting Events only, controlling for intervention magnitude and duration.
 
-**H2 (Feedback Coherence Predicts Option-Availability):** The quality and granularity of Feedback channels (e.g., richer interoceptive signals) predict measurable increases in option-availability and behavioral flexibility among actors, proxied by decision entropy and task switching performance. — Suggested measures: decision entropy; response latency variability; subjective option rating.
+**H2 (Feedback Coherence Predicts Option-Availability):** The quality and granularity of Feedback channels (e.g., richer interoceptive signals) predict measurable increases in option-availability and behavioral flexibility among actors, proxied by decision entropy and task switching performance. Suggested measures include decision entropy, response latency variability, and subjective option ratings.
 
 **H3 (Nested Controller Efficacy):** A hierarchical agent architecture implementing Embodied/Supervisory/Meta layers will outperform a flat controller in environments that require both rapid reaction and strategic selection among multiple policy frames. Performance measured by cumulative reward, adaptation speed after distributional shift, and robustness to simulated perturbations.
 
@@ -114,7 +114,7 @@ We formulate a small set of testable hypotheses that follow from the mapping. Th
 
 **H5 (Somatic Resonance as a Coherence Signal):** Subjective reports of somatic markers (felt expansion/contraction in the thoracic region) will correlate with physiological coherence proxies (e.g., HRV) and will predict subsequent policy/frame selection above and beyond expected utility terms.
 
-Each hypothesis is followed by a suggested experimental probe in Appendix A. In short: H1/H2/H5 are suitable for human subject experiments (laboratory + ecological sampling); H3/H4 can be evaluated in simulated agents and human-in-the-loop agent training regimes.
+Each hypothesis is followed by a suggested experimental probe in Appendix A. In short: H1/H2/H5 are suitable for human-subject experiments using laboratory studies and ecological momentary assessment (EMA); H3/H4 can be evaluated in simulated agents and human-in-the-loop agent training regimes.
 
 Having established the diagnostic ladder (Iceberg) and the architectural template (7-component model) and mapped them to the ConsciOS constructs, the paper now proceeds to specify the nested controller architecture (Embodied Controller / Supervisory Controller / Meta-Controller) and the Resonance Engine mechanics that implement selection among pre-rendered policy frames. The next section formalizes these components and derives the algorithmic protocols used in Appendix A.
 
@@ -143,7 +143,7 @@ We formalize the Nested ConsciOS Architecture as a nested control topology (Fig.
 
 This nested topology is isomorphic to viable-system decompositions in organizational cybernetics—lower operational units are supervised by higher intelligence while a meta-governor maintains identity and global objectives [11], [13]. Importantly, the ontology treats interplay between layers as bidirectional: the Meta-Controller constrains policy families top-down, while feedback and Quality Control mechanisms induce bottom-up belief revision.
 
-![The Nested ConsciOS Architecture — nested control topology (Embodied Controller, Supervisory Controller, Meta-Controller). Selector Score $= a \cdot \text{Utility} + b \cdot \text{Coherence} - g \cdot \text{Cost}$; Feedback aggregates at Supervisory Controller with a dotted slow branch to Meta-Controller; Quality Control routes Embodied → Supervisory → Meta for prior updates. Credit: ConsciOS architecture (this work); informed by the Viable System Model [11], [13] and hierarchical control frameworks [18], [19].](figures/nested-control-architecture.png){ width=100% }
+![The Nested ConsciOS Architecture — nested control topology (Embodied Controller, Supervisory Controller, Meta-Controller). Selector Score $= a \cdot \text{Utility} + b \cdot \text{Coherence} - g \cdot \text{Cost}$; feedback is aggregated by the Supervisory Controller, with slow prior-update pathways returning to the Meta-Controller. Credit: ConsciOS architecture (this work); informed by the Viable System Model [11], [13] and hierarchical control frameworks [18], [19].](figures/nested-control-architecture-rev5.png){ width=100% }
 
 ## 3.4 Measurement Constructs and Testable Mappings
 
@@ -240,7 +240,7 @@ Recommended testbeds:
 * **Human experiments:** controlled lab tasks with HRV and subjective ICS ladders as feedback; interventions include coherence-enhancing microprotocols and belief-update manipulations (see Appendix A: H1–H5).
 * **Hybrid setups:** human-in-the-loop training where ICS signals are incorporated as shaping rewards for agent training (evaluate transfer and subjective agency).
 
-**Illustrative toy ablation (sanity check).** We implemented a minimal environment with episodic distributional shifts and compared a hierarchical agent using a coherence-weighted selector ($bC + aU - g\,\mathrm{Cost}$) against a flat baseline. Sweeping $b$ and $a$ while logging selection traces yields aggregated heatmaps (reward, alignment rate, position-match proxy) indicating that higher coherence weighting increases alignment with hidden context and improves simple proxy metrics in this toy setting. These traces serve as an instrumentation check only; full benchmarks belong in domain-appropriate tasks.
+**Illustrative toy ablation (instrumentation sanity check).** The project repository includes a minimal environment with episodic distributional shifts and a coherence-weighted selector ($bC + aU - g\,\mathrm{Cost}$). Sweeping $b$ and $a$ while logging selection traces yields aggregated heatmaps for reward, action/context agreement, and position-match proxies. These traces demonstrate that the proposed variables can be logged and visualized in a reproducible toy setting; they are not presented as empirical validation of the architecture. Full benchmarks require stronger environments, multiple seeds, independently motivated baselines, and prespecified alignment metrics.
 
 Section 5 formalizes the Resonance Engine and the coherence metrics used by the Supervisory Controller to perform frame selection. The subsequent Methods Appendices provide concrete experimental templates and simulation specifications for the tests proposed here.
 
@@ -498,7 +498,7 @@ where $L_{\mathrm{total}}$ includes prediction error terms that were previously 
 **Medium-term priorities (6–24 months):**
 
 * Human-in-the-loop RLHF trials using ICS as shaping signal with strong safety monitoring.
-* Cross-domain replication (lab, ecological sampling, simulated agents) and release of open datasets and code.
+* Cross-domain replication (laboratory studies, ecological momentary assessment, simulated agents) and release of open datasets and code.
 * Comparative studies mapping ConsciOS constructs to VSM/active inference control metrics in organizational settings.
 
 **Model status summary.** The paper's structural mappings to systems theory, active inference, and hierarchical RL are principally established. Key operational innovations (ICS as fast control signal; Time-Integrated Coherence gating; NLS heuristic) are framed as hypotheses and will be elevated as empirical evidence accumulates.
@@ -582,9 +582,9 @@ Below are prioritized experiments that produce defensible empirical claims and a
 * **Phase 2 (6–12 months):** Human pilot for Experiment 3 under IRB; release anonymized datasets and analysis scripts; produce safety/adversarial analysis.
 * **Phase 3 (12–24 months):** Domain pilots (robotics, smart home) with external audits and governance reporting; refine Meta-Controller governance patterns for organizational deployment.
 
-## 7.8 Funding, Community, and Research Agenda
+## 7.8 Research Agenda and Community Building
 
-**Priority funding areas:**
+**Priority research areas:**
 
 * **Core research:** hierarchical agent benchmarks and coherence metric standardization.
 * **Measurement science:** validating ICS mappings across populations and contexts.
@@ -600,11 +600,11 @@ Below are prioritized experiments that produce defensible empirical claims and a
 
 ConsciOS provides a layered architecture that is especially well-suited for hybrid human-agent systems where rapid, affective feedback and clear governance are necessary. The proposed experiments are designed to deliver concrete evidence about whether coherence-based gating and affect-informed shaping improve adaptability, transfer, and alignment in hierarchical agents. The next step is to implement the simulation testbeds (Phase 0/1) and publish reproducible baselines that enable community scrutiny.
 
-# 8. Becoming a Conscious Architect — Practical Implications for Design
+# 8. Practical Implications for AI System Design
 
 ## 8.1 Purpose and Scope
 
-This section translates architecture into practice: design patterns, organizational applications, curricula for training human operators, and product prototypes that operationalize ConsciOS in real contexts. It emphasizes repeatability, instrumentation, and governance.
+This section translates the architecture into design patterns for AI and hybrid human-agent systems. The emphasis is on repeatable instrumentation, explicit governance layers, and conservative deployment boundaries rather than product or organizational branding.
 
 ## 8.2 Design Patterns & Practices
 
@@ -612,15 +612,15 @@ This section translates architecture into practice: design patterns, organizatio
 * **Pattern: Coherence-gated complexity** — use Time-Integrated Coherence thresholds to gate high-cost capabilities (compute, autonomy, privilege escalation).
 * **Pattern: Rapid Feedback Loops** — implement ICS proxies or synthetic analogues that feed short-horizon controllers for real-time micro-adjustments.
 
-## 8.3 Organizational Applications
+## 8.3 Human-Agent and Organizational Applications
 
-* **Team design:** map Embodied Controller roles to operational teams, Supervisory Controller roles to coordination roles, Meta-Controller roles to governance/strategy; instrument team decision logs as policy traces.
-* **Product design:** staged feature unlocking by Time-Integrated Coherence; adaptability modules for user interfaces based on measured ICS proxies.
+* **Human-agent decision support:** map Embodied Controller roles to task execution, Supervisory Controller roles to coordination and policy selection, and Meta-Controller roles to governance and long-horizon constraints; instrument decisions as policy traces.
+* **Adaptive AI systems:** staged capability unlocking by Time-Integrated Coherence; interface adaptation based on consented, validated proxies rather than opaque affect inference.
 
-## 8.4 Training & Curricula
+## 8.4 Training and Evaluation
 
-* **Curriculum:** imagineer practices → coherence training → quality control drills. Translate book protocols into training modules (micro-exercises with measurement).
-* **Operator tooling:** dashboards that show coherence, Time-Integrated Coherence balances, and option-availability metrics to support decision making.
+* **Operator training:** coherence-estimation drills, policy-selection audits, and quality-control reviews with explicit measurement rather than introspective authority.
+* **Evaluation tooling:** dashboards that show coherence scores, Time-Integrated Coherence balances, option-availability metrics, and safety-controller engagement rates.
 
 ## 8.5 Implementation Checklist
 
@@ -643,10 +643,10 @@ We formalized a nested control architecture for consciousness, introduced resona
 * **Operational complexity:** multi-modal coherence computation is computationally nontrivial.
 * **Ethical concerns:** privacy, signal manipulation, and reward-hacking risks in human-in-the-loop settings.
 * **Novelty limits:** several constructs are integrative—must avoid overclaiming novelty where existing work overlaps.
-* **Domain scope:** Our empirical validation focuses primarily on hierarchical reinforcement learning agents in structured environments. The framework's applicability to other AI architectures (large language models, transformers, diffusion models) and to more open-ended, real-world domains remains to be demonstrated. For high-dimensional spaces (e.g., LLM latent states), we suggest a "sparse coherence" approach where resonance is evaluated only on key decision nodes to manage computational latency. Similarly, while we propose human-subjects protocols, large-scale validation across diverse populations and contexts has not yet been conducted.
-* **Alignment properties:** While our agent benchmarks demonstrate improved task performance through coherence-based selection, we have not yet systematically evaluated whether ConsciOS-based architectures exhibit superior alignment properties—such as robustness to distributional shift, resistance to reward hacking, or long-term goal stability—compared to alternative approaches. These alignment-specific evaluations represent crucial future work.
+* **Domain scope:** The proposed validation roadmap focuses initially on hierarchical reinforcement learning agents in structured environments. The framework's applicability to other AI architectures (large language models, transformers, diffusion models) and to more open-ended, real-world domains remains to be demonstrated. For high-dimensional spaces (e.g., LLM latent states), we suggest a "sparse coherence" approach where resonance is evaluated only on key decision nodes to manage computational latency. Similarly, while we propose human-subjects protocols, large-scale validation across diverse populations and contexts has not yet been conducted.
+* **Alignment properties:** The present toy instrumentation does not establish whether ConsciOS-based architectures exhibit superior alignment properties—such as robustness to distributional shift, resistance to reward hacking, or long-term goal stability—compared to alternative approaches. These alignment-specific evaluations represent crucial future work.
 
-We view these limitations not as fundamental weaknesses but as invitations for future research. The v1.0 designation of this paper reflects our expectation that the framework will evolve through continued empirical validation, community engagement, and iterative refinement based on real-world applications.
+We view these limitations not as fundamental weaknesses but as boundaries on current claims. The framework should evolve through empirical validation, community critique, and iterative refinement based on reproducible simulations and ethically reviewed human-subjects work.
 
 ## 9.3 Implications for AI Alignment
 
@@ -676,12 +676,13 @@ This section offers an honest appraisal of current limitations, discusses implic
 
 # 10. Conclusion
 
-This paper presents ConsciOS as a unified engineering program for consciousness as a designable system—one that can be modeled, instrumented, and improved through rigorous experimentation. We contribute three core elements: (i) a nested three-layer control architecture (Embodied Controller, Supervisory Controller, Meta-Controller) that decomposes conscious agency into testable subsystems grounded in viable systems theory, hierarchical reinforcement learning, and active inference; (ii) coherence-based selection mechanisms (Resonance Engine, ICS, Time-Integrated Coherence) that operationalize affect and interoceptive feedback as measurable control signals; and (iii) a comprehensive empirical roadmap with detailed experimental protocols, canonical terminology mappings, and reproducible code references.
+This paper presents ConsciOS as a unified engineering program for studying consciousness and self-regulation as designable control structures—systems that can be modeled, instrumented, and tested through rigorous experimentation. It contributes three core elements: (i) a nested three-layer control architecture (Embodied Controller, Supervisory Controller, Meta-Controller) that decomposes agency into testable subsystems grounded in viable systems theory, hierarchical reinforcement learning, and active inference; (ii) coherence-based selection mechanisms (Resonance Engine, ICS, Time-Integrated Coherence) that operationalize affect and interoceptive feedback as measurable control signals; and (iii) an empirical roadmap with experimental protocols, operational definitions, and reproducible code scaffolding.
 
-ConsciOS reframes consciousness as an engineering challenge—testable, instrumentable, and governable. The architecture offers practical affordances for AI alignment through interpretable hierarchical decomposition, affect-informed policy selection, and built-in safety mechanisms. By providing formal, testable hypotheses about consciousness as hierarchical control, we bridge contemplative traditions, systems science, and modern computational frameworks—translating millennia of systematic observation into falsifiable hypotheses that are practically applicable to the urgent challenge of building aligned artificial intelligence. A key implication is that **alignment is an architectural property, not a training outcome:** coherence must be designed into the control structure before deployment, not patched post-hoc. 
+ConsciOS reframes consciousness and self-regulation as engineering challenges: testable, instrumentable, and governable. The architecture offers practical hypotheses for AI alignment through interpretable hierarchical decomposition, affect-informed policy selection, and explicit safety mechanisms. By translating phenomenological observations into falsifiable control-theoretic constructs, the framework proposes a bridge between systems science, affective neuroscience, active inference, and modern AI. A key implication is that robust alignment may need to be treated as an architectural property as well as a training outcome: coherence-sensitive control structures should be designed and evaluated before deployment, not only patched through post-hoc behavioral correction.
 
 We invite researchers, engineers, and practitioners to implement, test, and critique the proposed models and to collaborate on open benchmarks and datasets.
 
+\clearpage
 \appendixfigures
 
 ## Appendix A — Experimental protocols
@@ -689,11 +690,11 @@ We invite researchers, engineers, and practitioners to implement, test, and crit
 Experimental Protocols (full templates)
 
 * **A.1** H1: Structure-Change Leverage RCT (human) — objectives, sample sizes, randomization, outcome metrics, analysis plan, preregistration template.
-* **A.2** H2: Feedback Coherence → Option-Availability — ecological sampling + lab micro-tasks.
+* **A.2** H2: Feedback Coherence → Option-Availability — ecological momentary assessment (EMA) plus lab micro-tasks.
 * **A.3** H3: Nested Controller Benchmark (simulations) — environment specs, seeds, agent code skeleton, logging format.
 * **A.4** H4: ICS as RLHF shaping (pilot human trials) — consent forms, pre-screening, safety checks, adversarial monitoring.
 
-* **A.5** Toy ablation (simulation demo) — **Purpose:** verify telemetry and selector sensitivity. **Setup:** episodic context shifts; hierarchical agent with coherence-weighted selection (b, a sweeps). **Outputs:** selection traces and aggregated heatmaps (reward, alignment rate, position-match proxy). **Code:** repository `code/` directory (env, agents, plots) [7]; figures are illustrative only. Note: Figure A1 is an illustrative schematic; full benchmarks with non-flat performance landscapes are reserved for future empirical work.
+* **A.5** Toy ablation (simulation demo) — **Purpose:** verify telemetry and selector sensitivity. **Setup:** episodic context shifts; hierarchical agent with coherence-weighted selection (b, a sweeps). **Outputs:** selection traces and aggregated heatmaps (reward, alignment rate, position-match proxy). **Code:** repository `code/` directory (env, agents, plots) [9]; figures are illustrative only. Note: Figure A1 is an illustrative schematic; full benchmarks with non-flat performance landscapes are reserved for future empirical work.
 
 * **A.6** H5: Somatic Resonance Validation (human) — **Purpose:** test whether subjective thoracic expansion/contraction correlates with physiological coherence and predicts frame selection. **Design:** within-subject time-series; collect HRV (time/frequency indices), optional EEG coherence, and rapid subjective reports of somatic feelings and ICS ladder; induce small local perturbations and log subsequent frame selection. **Analysis:** mixed models with lagged predictors; test added predictive value over utility and baseline affect.
 
@@ -705,112 +706,36 @@ Experimental Protocols (full templates)
 \vspace{-8pt}
 \end{figure}
 ```
-Each template includes the stepwise procedure, required hardware/software, analysis scripts skeleton, expected effect sizes, and a power-calculations placeholder.
+Each proposed template specifies the stepwise procedure, required hardware/software, analysis-script structure, target effect-size assumptions, and power-calculation requirements.
 
 ## Appendix B — Measurement Instruments & Analysis Pipelines
 
 * **B.1** HRV measurement spec (sensor types, sampling rates, preprocessing).
 * **B.2** EEG coherence pipeline (preprocessing, epoching, Phase-Locking Value (PLV) / Inter-Subject Correlation (ISC) metrics).
-* **B.3** Coherence computation code (KLD, log-evidence, embedding cosine examples) — code repository [7]
+* **B.3** Coherence computation code (KLD, log-evidence, embedding cosine examples) — code repository [9]
 * **B.4** Policy logging schema & Supervisory Controller selection trace format (JavaScript Object Notation (JSON) schema).
 * **B.5** Statistical analysis pipelines (time-series mixed models, Granger causality / vector autoregression (VAR), causal estimation approach).
 
-## Appendix C — Public Translation & Operationalization
+## Appendix C — Operational Glossary
 
-**Table 2.** Operational Definitions & Design Metaphors — for cross-disciplinary application (e.g., organizational design), this architecture maps formal control variables to operational metaphors used in the author's applied handbooks:
+**Table 2.** Operational definitions and suggested measures for the principal ConsciOS constructs.
 
-| Canonical Term | Applied Metaphor | Operational Definition / Measures |
+| Construct | Operational Definition | Candidate Measures |
 |---|---|---|
-| Embodied Controller | Echo-Self | Local actor subsystem executing fast closed-loop control. Measures: reaction latency, action entropy, short-horizon task performance. |
-| Supervisory Controller | Super-Self | Aggregates feedback and selects among policy families. Measures: policy selection latency, switch frequency, selection accuracy. |
-| Meta-Controller | Meta-Self | Encodes long-horizon priors and the generative space of policies. Measures: prior concentration, transfer/meta-learning performance. |
-| Central Coherence Estimator | Kernel | Focal interoceptive/state-confidence signal. Measures: HRV, interoceptive accuracy; estimator precision. |
-| Interoceptive Control Signal (ICS) | Emotional Guidance Scale (EGS) | Laddered affect used as internal control signal. Measures: self-report ladder, HRV, EEG proxies. |
-| Resonance Engine | Resonance Engine | Coherence-based selector. Measures: coherence score, selection confidence. |
-| Time-Integrated Coherence | FREQ Coin | Time-integrated coherence resource. Measures: cumulative coherence over window, option-availability proxy. |
-| Quality Control | Quality Control | Belief-surfacing / model revision. Measures: update frequency, belief entropy, error magnitude. |
-| Policy/Frame Library | Policy/Frame Library | Library of precomputed policy frames/timelines for selection. Measures: policy diversity, match scores. |
-| Fallback Safety Controller | Ego Autopilot | Low-variance default policy engaged under low confidence. Measures: reversion frequency, conservatism index. |
-| Diagnostic Hierarchy | The Iceberg | Diagnostic hierarchy levels (Events/Patterns/Structures/ Models). Measures: event/pattern/structure metrics. |
-| System Flows | The 7 Flows | Flows (Input/Process/Output/Feedback/ Actors). Measures: throughput, latency. |
+| Embodied Controller | Local actor subsystem executing fast closed-loop control. | Reaction latency, action entropy, short-horizon task performance, sensorimotor noise. |
+| Supervisory Controller | Mid-level selector that aggregates feedback and selects among policy families. | Policy selection latency, switch frequency, selection accuracy under perturbation. |
+| Meta-Controller | Slow controller that shapes priors and the generative space of policies. | Prior concentration, transfer/meta-learning performance, changes in policy-family distribution. |
+| Central Coherence Estimator | Focal state-confidence or interoceptive signal used to estimate coherence. | HRV, interoceptive accuracy, posterior precision, estimator confidence. |
+| Interoceptive Control Signal (ICS) | Discretized or continuous internal feedback signal derived from interoceptive and predictive-fit measures. | Self-report ladder, HRV, EEG proxies, affect classification, prediction-error dynamics. |
+| Resonance Engine | Coherence-based policy/frame selector. | Coherence score, selection confidence, model evidence, embedding similarity, KLD. |
+| Time-Integrated Coherence (TIC) | Accumulated coherence over a time window used as a gating resource. | Area under coherence curve, cumulative model evidence, option-availability proxy. |
+| Quality Control | Belief-surfacing and model revision following coherence shifts. | Belief entropy, update rate, prediction-error magnitude, revision latency. |
+| Policy/Frame Library | Library of candidate policy frames available for selection. | Policy diversity, match scores, retrieval latency, option set size. |
+| Fallback Safety Controller | Low-variance default policy engaged under low confidence or low coherence. | Reversion frequency, conservatism index, recovery time, override rate. |
+| Diagnostic Hierarchy | Event-pattern-structure-prior decomposition used for causal analysis. | Event frequency, pattern persistence, structural metrics, belief inventories. |
+| System Flows | Functional decomposition into inputs, processes, outputs, feedback, actors, and constraints. | Throughput, latency, bottleneck measures, coupling metrics. |
 
-**Detailed Terminology Mappings.** The following entries provide expanded definitions, operational measures, and suggested citations for each ConsciOS term listed in Table 2. These detailed mappings support reproducible operationalization and citation tracking across experimental protocols.
-
-#### Embodied Controller
-
-* **ConsciOS Alias (applied metaphor):** Echo-Self
-* **Operational definition / measures:** Local actor subsystem executing fast closed-loop control. Measures: reaction latency, action entropy, short-horizon task performance, sensorimotor noise.
-* **Suggested citation & placement:** VSM S1–3 mapping; hierarchical RL; Section 4.1, Appendix B [16], [17].
-
-#### Supervisory Controller
-
-* **ConsciOS Alias (applied metaphor):** Super-Self
-* **Operational definition / measures:** Aggregates feedback and selects among policy families. Measures: policy selection latency, switch frequency, selection accuracy under perturbation.
-* **Suggested citation & placement:** Meta-RL & hierarchical RL; Sections 4.1–4.4 [16], [17].
-
-#### Meta-Controller
-
-* **ConsciOS Alias (applied metaphor):** Meta-Self
-* **Operational definition / measures:** Encodes long-horizon priors and the generative space of policies. Measures: prior concentration, transfer/meta-learning performance.
-* **Suggested citation & placement:** Meta-learning; Sections 4.1 & 7 [16].
-
-#### Central Coherence Estimator
-
-* **ConsciOS Alias (applied metaphor):** Kernel
-* **Operational definition / measures:** Focal interoceptive/state-confidence signal. Human proxy: HRV, interoceptive accuracy. Agent proxy: estimator precision.
-* **Suggested citation & placement:** Interoception literature; Methods/Appendix B [3].
-
-#### Interoceptive Control Signal (ICS)
-
-* **ConsciOS Alias (applied metaphor):** Emotional Guidance Scale (EGS)
-* **Operational definition / measures:** Laddered affect used as internal control signal. Measures: self-report ladder, HRV, EEG proxies, affect classification.
-* **Suggested citation & placement:** Affect & interoception reviews; Section 5.2 & Appendix A [3].
-
-#### Resonance Engine
-
-* **ConsciOS Alias (applied metaphor):** Resonance Engine
-* **Operational definition / measures:** Chooses policy frame with maximal coherence; match-score or Bayesian evidence metric. Measures: coherence score, selection confidence.
-* **Suggested citation & placement:** Active inference / predictive processing; Section 5.1 [14].
-
-#### Time-Integrated Coherence (TIC)
-
-* **ConsciOS Alias (applied metaphor):** FREQ Coin
-* **Operational definition / measures:** Time-integrated coherence units (e.g., area under coherence curve). Measures: cumulative coherence over window, option-availability proxy.
-* **Suggested citation & placement:** Section 5 & Appendix B.
-
-#### Quality Control
-
-* **ConsciOS Alias (applied metaphor):** Quality Control
-* **Operational definition / measures:** Frequency of internal model updates following coherence shifts. Measures: belief entropy, update rate, error magnitude.
-* **Suggested citation & placement:** Active inference & Bayesian update; Section 5.4 [14].
-
-#### Policy/Frame Library
-
-* **ConsciOS Alias (applied metaphor):** Policy/Frame Library
-* **Operational definition / measures:** Library of precomputed policy frames/timelines for selection. Measures: policy diversity, match scores, retrieval latency.
-* **Suggested citation & placement:** Meta-RL & simulation; Sections 5.1 / 4.4 [18], [19].
-
-#### Fallback Safety Controller
-
-* **ConsciOS Alias (applied metaphor):** Ego Autopilot
-* **Operational definition / measures:** Low-variance survival policy under low-coherence. Measures: reversion frequency, conservatism index.
-* **Suggested citation & placement:** Systems thinking (Meadows; Senge); Section 2.1 [10], [12].
-
-#### Diagnostic Hierarchy levels
-
-* **ConsciOS Alias (applied metaphor):** The Iceberg (Events / Patterns / Structures / Models)
-* **Operational definition / measures:** Diagnostic hierarchy levels. Measures: event/pattern/structure metrics.
-* **Suggested citation & placement:** Systems thinking (Meadows); Section 2.2 [10].
-
-#### System Flows
-
-* **ConsciOS Alias (applied metaphor):** The 7 Flows
-* **Operational definition / measures:** Systems decomposition—each flow has standard metrics (throughput, latency, bottleneck).
-* **Suggested citation & placement:** Systems engineering & cybernetics; Section 2.2 [11], [13].
-
-**Note:**
-
-For each term, Appendix B contains measurement protocols and recommended instruments (e.g., HRV measurement specs, EEG coherency pipeline, policy-switch logging format).
+For each construct, Appendix B outlines measurement protocols and analysis pipelines. The glossary is intended to reduce terminological ambiguity; it is not a separate branding or metaphor layer.
 
 ## Appendix D — Viable System Model (VSM) Mapping
 
@@ -820,17 +745,37 @@ VSM Systems and ConsciOS alignment (concise):
 * VSM S4 (Intelligence/adaptation/future planning) → Supervisory Controller (policy/frame selection; supervisory control).
 * VSM S5 (Policy/identity/governance) → Meta-Controller (long-horizon priors; identity constraints; slow adaptation).
 
-**Notes:** Echo corresponds to operational bandwidth and local control; Super aggregates feedback and selects among policy families; Meta encodes priors and identity constraints that shape policy space and slow updates. This mapping is heuristic but aligns with canonical VSM roles [11], [13].
+**Notes:** The Embodied Controller corresponds to operational bandwidth and local control; the Supervisory Controller aggregates feedback and selects among policy families; the Meta-Controller encodes priors and identity constraints that shape policy space and slow updates. This mapping is heuristic but aligns with canonical VSM roles [11], [13].
 
-## AI Usage Declaration
+## Data Availability Statement
 
-The architectural design, system decomposition (Embodied/Supervisory/Meta), and control-theoretic logic are the original work of the author. Large Language Models were utilized strictly as typesetting, copy-editing, and formatting tools to accelerate the drafting of the manuscript.
+This manuscript presents a theoretical architecture and proposed protocols; no new human-subjects or animal data were collected. The project repository contains the manuscript source, figures, toy simulation code, and illustrative logs/plots used for instrumentation checks [9]. The current public preprint record is available on Zenodo at doi:10.5281/zenodo.17943102. Repository and preprint metadata should be updated before final journal submission if a new v5 Zenodo version is deposited.
+
+## Ethics Statement
+
+No human participants or animals were involved in the present theoretical work. All proposed human-subjects protocols described in Appendix A would require prospective ethics review, informed consent, privacy safeguards, and explicit data-governance procedures before implementation.
+
+## Author Contributions
+
+Kılıçhan (Han Kay) Kaynak developed the conceptual architecture, formalized the control-theoretic model, prepared the manuscript, created the figures, and prepared the accompanying repository materials.
+
+## Funding
+
+The author declares that no financial support was received for the research, authorship, or publication of this article.
+
+## Conflict of Interest
+
+The author declares that the research was conducted in the absence of any commercial or financial relationships that could be construed as a potential conflict of interest.
+
+## Generative AI Statement
+
+The architectural design, system decomposition (Embodied/Supervisory/Meta), and control-theoretic logic are the original work of the author. Large language models were used as drafting, copy-editing, formatting, and reference-checking assistants. The author reviewed and approved all generated or edited text and remains responsible for the manuscript's content.
 
 \raggedright
 
 ## References
 
-[1] B. Schoen, E. Nitishinskaya, M. Balesni, et al., "Stress Testing Deliberative Alignment for Anti-Scheming Training," Apollo Research & OpenAI, 2025. arXiv:2509.15541.
+[1] B. Schoen, E. Nitishinskaya, M. Balesni, A. Højmark, F. Hofstätter, J. Scheurer, et al., "Stress Testing Deliberative Alignment for Anti-Scheming Training," arXiv:2509.15541, 2025. doi:10.48550/arXiv.2509.15541.
 
 [2] OpenAI, "Detecting and Reducing Scheming in AI Models," 2025. Available at: https://openai.com/index/detecting-and-reducing-scheming-in-ai-models/
 
@@ -840,13 +785,13 @@ The architectural design, system decomposition (Embodied/Supervisory/Meta), and 
 
 [5] B. K. Holzel, U. Ott, T. Gard, H. Hempel, M. Weygandt, K. Morgen, and D. Vaitl, "Investigation of mindfulness meditation practitioners with voxel-based morphometry," Social Cognitive and Affective Neuroscience, vol. 3, no. 1, pp. 55–61, 2008. doi:10.1093/scan/nsm038.
 
-[6] Y.-Y. Tang, R. Tang, and M. I. Posner, "Brief meditation training induces white matter changes in the anterior cingulate," Proceedings of the National Academy of Sciences (PNAS), vol. 107, no. 35, pp. 15649–15652, 2010. doi:10.1073/pnas.1011043107.
+[6] Y.-Y. Tang, Q. Lu, X. Geng, E. A. Stein, Y. Yang, and M. I. Posner, "Short-term meditation induces white matter changes in the anterior cingulate," Proceedings of the National Academy of Sciences, vol. 107, no. 35, pp. 15649–15652, 2010. doi:10.1073/pnas.1011043107.
 
 [7] J. Riddle and J. W. Schooler, "Hierarchical consciousness: the Nested Observer Windows model," Neuroscience of Consciousness, vol. 2024, no. 1, 2024, Art. niae010. doi:10.1093/nc/niae010.
 
 [8] J. Smallwood and J. W. Schooler, "The Science of Mind Wandering: Empirically Navigating the Stream of Consciousness," Annual Review of Psychology, vol. 66, pp. 487–518, 2015. doi:10.1146/annurev-psych-010814-015331.
 
-[9] K. Kaynak, "ConsciOS v1.0 Code Repository," Source code, 2025. Available: https://github.com/Sistemist/consciOS-paper.
+[9] K. Kaynak, "ConsciOS: A Viable Systems Architecture for Human and AI Alignment — manuscript source and illustrative code repository," Source code, 2025. Available: https://github.com/Sistemist/consciOS-paper.
 
 [10] P. M. Senge, "The Fifth Discipline: The Art and Practice of the Learning Organization," Revised and Updated. Doubleday/Currency, 2006.
 
@@ -858,25 +803,24 @@ The architectural design, system decomposition (Embodied/Supervisory/Meta), and 
 
 [14] K. Friston, "The free-energy principle: a unified brain theory?," Nature Reviews Neuroscience, vol. 11, no. 2, pp. 127–138, 2010. doi:10.1038/nrn2787.
 
-[15] M. Albarracin, I. Hipólito, J. Ramstead, et al., "Designing Explainable Artificial Intelligence with Active Inference: A Framework for Transparent Introspection and Decision-Making," in Active Inference, M. Biehl et al., Eds. Springer, 2024, pp. 123–144. arXiv:2408.06348.
+[15] M. Albarracin, I. Hipólito, S. E. Tremblay, J. G. Fox, G. René, K. Friston, and M. J. D. Ramstead, "Designing explainable artificial intelligence with active inference: A framework for transparent introspection and decision-making," arXiv:2306.04025, 2023. doi:10.48550/arXiv.2306.04025.
 
-[16] K. Friston, L. Da Costa, D. Hafner, C. Hesp, and T. Parr, "Active Inference: The Free Energy Principle in Mind, Brain, and Behavior." MIT Press, 2022. doi:10.7551/mitpress/12441.001.0001.
+[16] T. Parr, G. Pezzulo, and K. J. Friston, "Active Inference: The Free Energy Principle in Mind, Brain, and Behavior." MIT Press, 2022. doi:10.7551/mitpress/12441.001.0001.
 
-[17] A. Darling, S. Denton, and K. Safron, "Relevance Realization through Active Inference and the Free Energy Principle," arXiv:2501.09899, 2025.
+[17] T. Darling, A. W. Corcoran, and J. Hohwy, "Solving the relevance problem with predictive processing," Philosophical Psychology, vol. 39, no. 4, pp. 1472–1497, 2026. doi:10.1080/09515089.2025.2460502.
 
 [18] R. S. Sutton and A. G. Barto, "Reinforcement Learning: An Introduction," 2nd ed. MIT Press, 2018.
 
 [19] R. S. Sutton, D. Precup, and S. Singh, "Between MDPs and semi-MDPs: A framework for temporal abstraction in reinforcement learning," Artificial Intelligence, vol. 112, nos. 1–2, pp. 181  –211, 1999. doi:10.1016/S0004-3702(99)00052-1.
 
-[20] D. Amodei, C. Olah, J. Steinhardt, P. Christiano, J. Schulman, and D. Mané, "Concrete Problems in AI Safety." arXiv:1606.06565, 2016. Available: https://arxiv.org/abs/1606.06565.
+[20] D. Amodei, C. Olah, J. Steinhardt, P. Christiano, J. Schulman, and D. Mané, "Concrete Problems in AI Safety." arXiv:1606.06565, 2016. doi:10.48550/arXiv.1606.06565.
 
-[21] E. Hubinger, C. van Merwijk, V. Mikulik, J. Skalse, and S. Garrabrant, "Risks from Learned Optimization in Advanced Machine Learning Systems." arXiv:1906.01820, 2019. Available: https://arxiv.org/abs/1906.01820.
+[21] E. Hubinger, C. van Merwijk, V. Mikulik, J. Skalse, and S. Garrabrant, "Risks from Learned Optimization in Advanced Machine Learning Systems." arXiv:1906.01820, 2019. doi:10.48550/arXiv.1906.01820.
 
-[22] P. Lanillos, C. Meo, C. Pezzato, et al., "Active Inference in Robotics and Artificial Agents: Survey and Challenges," arXiv:2112.01871, 2021.
+[22] P. Lanillos, C. Meo, C. Pezzato, A. A. Meera, M. Baioumy, W. Ohata, et al., "Active Inference in Robotics and Artificial Agents: Survey and Challenges," arXiv:2112.01871, 2021. doi:10.48550/arXiv.2112.01871.
 
-[23] M. Barthet, A. Khalifa, A. Liapis, and G. N. Yannakakis, "Play with Emotion: Affect-Driven Reinforcement Learning," in 2022 10th International Conference on Affective Computing and Intelligent Interaction (ACII), 2022. arXiv:2208.12622v1.
+[23] M. Barthet, A. Khalifa, A. Liapis, and G. N. Yannakakis, "Play with Emotion: Affect-Driven Reinforcement Learning," arXiv:2208.12622, 2022. doi:10.48550/arXiv.2208.12622.
 
 [24] S. Pateria, B. Subagdja, A.-H. Tan, and C. Quek, "Hierarchical Reinforcement Learning: A Comprehensive Survey," ACM Computing Surveys, 54(5), 1–35, 2021. doi:10.1145/3453160.
 
-[25] L. Ouyang, J. Wu, X. Jiang, et al., "Training language models to follow instructions with human feedback," in Advances in Neural Information Processing Systems (NeurIPS), 2022. arXiv:2203.02155.
-
+[25] L. Ouyang, J. Wu, X. Jiang, D. Almeida, C. L. Wainwright, P. Mishkin, et al., "Training language models to follow instructions with human feedback," in Advances in Neural Information Processing Systems (NeurIPS), 2022. arXiv:2203.02155. doi:10.48550/arXiv.2203.02155.

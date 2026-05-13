@@ -13,7 +13,7 @@ def run(episodes: int, seed: int, beta: float, alpha: float, freq_on: bool, egs_
 	s = env.reset()
 	ep, step = 0, 0
 	while ep < episodes:
-		# placeholder coherence/util estimates
+		# Toy coherence/utility estimates for instrumentation, not benchmark claims.
 		eu_left, eu_right = 0.1, 0.1
 		# coherence shaped by context (ctx>0 favors right), with small noise
 		base, delta = 0.6, 0.2
@@ -47,5 +47,4 @@ if __name__ == "__main__":
 	parser.add_argument("--log_path", type=str, default="logs/hier_traces.csv")
 	args = parser.parse_args()
 	run(args.episodes, args.seed, args.beta, args.alpha, args.freq_on.lower()=="true", args.egs_on.lower()=="true", args.log_path)
-
 
