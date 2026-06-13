@@ -1,6 +1,8 @@
 # ConsciOS Paper
 
-This repository contains the ConsciOS v5 manuscript revision for a planned Frontiers in Artificial Intelligence Hypothesis and Theory submission, preprint build assets, and an illustrative toy code demo.
+This repository contains the ConsciOS v5 manuscript revision for major journal submission as a Hypothesis and Theory article, preprint build assets, and an illustrative toy code demo.
+
+Core architecture, mathematical structure, and proposed research program remain continuous with earlier versions.
 
 - Manuscript source: `paper-v5.md`
 - Preprint: `preprint/ConsciOS_v5_preprint.pdf`
